@@ -3,9 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>gaoooo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    
+<body class="container">
+    <div class="vert">
+        <h2 id="heading">Hi Kiko</h2>
+        <img id="img" src="hiKiko.jpg">
+        <div class="horiz">
+            <button id="continueButton" type="button">woof</button>
+            <button style="display:none" id="goodButton" type="button">good girl</button>
+            <button style="display:none" id="badButton" type="button">bad girl :(</button>
+        </div>
+    </div>
 </body>
 </html>
+
+<script>
+    let count = 0
+    const goodButton = document.getElementById("goodButton")
+    const badButton = document.getElementById("badButton")
+    const continueButton = document.getElementById("continueButton")
+    const heading = document.getElementById("heading")
+    const img = document.getElementById("img")
+    
+    continueButton.addEventListener("click", () => {
+        goodButton.style.display = "inline-block"
+        badButton.style.display = "inline-block"
+        continueButton.style.display = "none"
+        img.src = "kikoQuestion.jpg"
+        heading.innerText = "is Kiko a good girl"
+    })
+
+    badButton.addEventListener("click", () => {
+        count += 1
+
+        badButton.style.backgroundColor = "tomato"
+        badButton.style.transform = `scale(${1 - count * .01})`
+
+        goodButton.style.backgroundColor = "lime"
+        goodButton.style.transform = `scale(${1 + count * .05})`        
+        goodButton.innerText = "pls say good girl"
+
+        if (count % 3 === 0) {
+            img.src = "badKiko1.jpg"
+        } else if (count % 3 === 1) {
+            img.src = "badKiko2.jpg"
+        } else {
+            img.src = "badKiko3.jpg"
+        }
+
+        if (count > 10) {
+            heading.innerText = "cunt pussy fuck shit cunt bitch cunt ass fuck"
+        }
+        else {
+            heading.innerText = "Bad answer. Try again. Or else."}
+    })
+
+    goodButton.addEventListener("click", () => {
+        goodButton.style.display = "none"
+        badButton.style.display = "none"
+        heading.innerText = "ily"
+        img.src = "goodKiko.jpg"
+    })
+</script>
